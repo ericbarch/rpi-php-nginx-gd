@@ -1,4 +1,6 @@
-FROM arm32v7/ubuntu
+FROM resin/armv7hf-debian:stretch
+
+RUN [ "cross-build-start" ]
 
 RUN apt-get update && apt-get -y upgrade
 
@@ -11,3 +13,5 @@ RUN chmod a+rx /run.sh
 
 EXPOSE 80
 CMD ["/bin/bash", "/run.sh"]
+
+RUN [ "cross-build-end" ]
